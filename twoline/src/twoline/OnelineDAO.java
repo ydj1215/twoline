@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -25,10 +24,8 @@ public class OnelineDAO {  // Data Access Object
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, passwd);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return con;
@@ -82,7 +79,7 @@ public class OnelineDAO {  // Data Access Object
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getMemo());
 			pstmt.executeUpdate(); // select
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -106,7 +103,7 @@ public class OnelineDAO {  // Data Access Object
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getMemo());
 			pstmt.executeUpdate(); // select
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {

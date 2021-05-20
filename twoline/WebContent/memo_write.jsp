@@ -11,12 +11,12 @@
 <title>Insert title here</title>
 </head>
 <%
-request.setCharacterEncoding("UTF-8");
-String memo = request.getParameter("memo");
-OnelineDAO dao = new OnelineDAO();
-OnelineDTO dto = new OnelineDTO();
-dto.setMemo(memo);
-dao.insert(dto);
-response.sendRedirect("memo_list.jsp");
+	request.setCharacterEncoding("UTF-8");
+	String memo = request.getParameter("memo");
+	OnelineDAO dao = new OnelineDAO();
+	OnelineDTO dto = new OnelineDTO();
+	dto.setMemo(memo);
+	dao.insert(dto);
+	response.sendRedirect("memo_list.jsp");
 %>
 </html>
