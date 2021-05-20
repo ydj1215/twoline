@@ -12,6 +12,10 @@ public class OnelineDTO {
 		this.wdate = wdate;
 	}
 	
+	public OnelineDTO() {
+		super();
+	}	
+
 	public int getNo() {
 		return no;
 	}
@@ -30,5 +34,4 @@ public class OnelineDTO {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-
 }
