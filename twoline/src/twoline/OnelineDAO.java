@@ -56,7 +56,7 @@ public class OnelineDAO {  // Data Access Object
 				dtos.add(dto);
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -117,10 +117,5 @@ public class OnelineDAO {  // Data Access Object
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	public void delete(int no) 
-	{
-	
 	}
 }
