@@ -7,45 +7,46 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OnelineDAO { //date access object
-	private Connection con;
-	private String url; 
+
+public class OnelineDAO {  // Data Access Object
+	private String url;
 	private String user;
-	private String passwd; 
+	private String passwd;
 	
-	public OnelineDAO() { //생성자
+	public OnelineDAO() // 셍성자
+	{
 		this.url ="jdbc:mysql://localhost/world?characterEncoding=UTF-8&serverTimezone=UTC";
-		this.user="root";
-		this.passwd="woehddb5555!";
+		this.user = "root";
+		this.passwd = "1234";
 	}
 	
 	private Connection connect() {
-		
 		Connection con = null;
-		String sql = "select * from oneline order by no desc";
-		PreparedStatement pstmt = null;
-		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, passwd);
-		}catch(SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}catch(ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return con;
 	}
 	
-	public ArrayList<OnelineDTO> getlist() {
+	public ArrayList<OnelineDTO> getList() 
+	{
+		Connection con = null;
 		String sql = "select * from oneline order by no desc";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		ArrayList<OnelineDTO> dtos = new ArrayList<OnelineDTO>();
-		
-		con = connect();
+
+
 		try {
+			con = connect();
 			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery(); // select
 			while(rs.next()) {
 				int no = rs.getInt("no");
 				String memo = rs.getString("memo");
@@ -58,15 +59,49 @@ public class OnelineDAO { //date access object
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{ //오류가 걸리든 안걸리든 무조건 실행해라
+		} finally {
 			try {
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(con!=null) con.close();
-			}catch(Exception e) {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return dtos;
+	}
+	
+	public void insert(OnelineDTO dto)
+	{
+		Connection con = null;
+		String sql = "insert into oneline(memo) values( ? )";
+		PreparedStatement pstmt = null;
+
+		try {
+			con = connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemo());
+			pstmt.executeUpdate(); // select
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void delete(OnelineDTO dto)
+	{
+		
+	}
+	
+	public void delete(int no) 
+	{
+	
 	}
 }
