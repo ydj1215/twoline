@@ -97,7 +97,26 @@ public class OnelineDAO {  // Data Access Object
 	
 	public void delete(OnelineDTO dto)
 	{
-		
+		Connection con = null;
+		String sql = "delete from oneline(memo) values( ? )";
+		PreparedStatement pstmt = null;
+
+		try {
+			con = connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemo());
+			pstmt.executeUpdate(); // select
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void delete(int no) 

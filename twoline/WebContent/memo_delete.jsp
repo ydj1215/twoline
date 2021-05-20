@@ -19,6 +19,5 @@
 	dao.delete(dto);
 	response.sendRedirect("memo_list.jsp");
 %>
-good
 </body>
 </html>
