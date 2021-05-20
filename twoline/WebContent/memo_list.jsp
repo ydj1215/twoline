@@ -93,18 +93,13 @@
 	</form>
 	
 	<hr>
-	<div>
 <%
 	for(int i = 0; i < dtos.size() ; i++) {
 		OnelineDTO dto = dtos.get(i);
-		out.println("<p>(" + dto.getWdate() + ") " + dto.getMemo() + 
-				"<input type=\"button\" value=\"X\" onClick=\"location.href='memo_delete.jsp?no=" + dto.getNo() + "'\"><br>");
+		out.println("<p>(" + dto.getWdate() + ") " + dto.getMemo() + "<input type=\"button\" value=\"X\" onClick=\"location.href='memo_delete.jsp?no=" + dto.getNo() + "'\"><br>");
 		out.println("</input></p>");
 	}
 %>	
-		
-	</div>
-
 </div>
 </body>
 </html>

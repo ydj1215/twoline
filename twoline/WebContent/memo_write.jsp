@@ -16,7 +16,9 @@
 	OnelineDAO dao = new OnelineDAO();
 	OnelineDTO dto = new OnelineDTO();
 	dto.setMemo(memo);
+	
 	dao.insert(dto);
+	
 	response.sendRedirect("memo_list.jsp");
 %>
 </html>
