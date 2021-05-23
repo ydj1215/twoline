@@ -96,14 +96,13 @@ public class OnelineDAO {  // Data Access Object
 	public void delete(OnelineDTO dto)
 	{
 		Connection con = null;
-		String sql = "delete from oneline(memo) values( ? )";
+		String sql = "delete from oneline where no=("+dto.getNo()+")";
 		PreparedStatement pstmt = null;
 
 		try {
 			con = connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getMemo());
-			pstmt.executeUpdate(); // select
+			pstmt.executeUpdate(); // delete
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

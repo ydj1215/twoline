@@ -15,8 +15,8 @@
 	String memo = request.getParameter("memo");
 	OnelineDAO dao = new OnelineDAO();
 	OnelineDTO dto = new OnelineDTO();
-	dto.setMemo(memo);
 	
+	dto.setMemo(memo);
 	dao.insert(dto);
 	
 	response.sendRedirect("memo_list.jsp");

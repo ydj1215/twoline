@@ -10,14 +10,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String no = request.getParameter("no");
+	String memo = request.getParameter("memo");
 	OnelineDAO dao = new OnelineDAO();
 	OnelineDTO dto = new OnelineDTO();
+	
+	dto.setMemo(memo);
 	dao.delete(dto);
+	
 	response.sendRedirect("memo_list.jsp");
 %>
-</body>
 </html>
