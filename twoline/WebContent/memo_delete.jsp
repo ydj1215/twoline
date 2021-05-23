@@ -12,11 +12,11 @@
 </head>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String memo = request.getParameter("memo");
+	int no = Integer.parseInt(request.getParameter("no"));
 	OnelineDAO dao = new OnelineDAO();
 	OnelineDTO dto = new OnelineDTO();
 	
-	dto.setMemo(memo);
+	dto.setNo(no);
 	dao.delete(dto);
 	
 	response.sendRedirect("memo_list.jsp");
